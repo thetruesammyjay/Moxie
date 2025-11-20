@@ -21,36 +21,36 @@ Moxie is a decentralized perpetual futures exchange built on Solana that enables
 
 Moxie implements a multi-layered architecture optimized for high-frequency trading and cross-chain operations:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                         Frontend Layer                       │
-│                    (Next.js + Tailwind CSS)                 │
-└─────────────────┬───────────────────────────────────────────┘
-                  │
-┌─────────────────▼───────────────────────────────────────────┐
-│                      API Gateway Layer                       │
-│              (GraphQL + REST + WebSocket)                    │
-└─────────────────┬───────────────────────────────────────────┘
-                  │
-┌─────────────────▼───────────────────────────────────────────┐
-│                    Core Trading Engine                       │
-│  ┌──────────────────────────┐  ┌─────────────────────────┐ │
-│  │   Percolator Integration  │  │  Polymarket Mirroring   │ │
-│  │    (Sharded Orderbook)    │  │    (Gamma API Client)   │ │
-│  └──────────────────────────┘  └─────────────────────────┘ │
-└─────────────────┬───────────────────────────────────────────┘
-                  │
-┌─────────────────▼───────────────────────────────────────────┐
-│                    Liquidity & Settlement                    │
-│  ┌──────────────────────────┐  ┌─────────────────────────┐ │
-│  │    Meteora DLMM Pools    │  │   Jupiter Aggregator    │ │
-│  └──────────────────────────┘  └─────────────────────────┘ │
-└─────────────────┬───────────────────────────────────────────┘
-                  │
-┌─────────────────▼───────────────────────────────────────────┐
-│                      Blockchain Layer                        │
-│                    (Solana + Cross-chain)                    │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    %% Main Nodes
+    FE["Frontend Layer<br>(Next.js + Tailwind CSS)"]
+    API["API Gateway Layer<br>(GraphQL + REST + WebSocket)"]
+    BL["Blockchain Layer<br>(Solana + Cross-chain)"]
+
+    %% Core Trading Engine Subgraph
+    subgraph CTE [Core Trading Engine]
+        direction LR
+        P["Percolator Integration<br>(Sharded Orderbook)"]
+        PM["Polymarket Mirroring<br>(Gamma API Client)"]
+    end
+
+    %% Liquidity & Settlement Subgraph
+    subgraph LS [Liquidity & Settlement]
+        direction LR
+        MET["Meteora DLMM Pools"]
+        JUP["Jupiter Aggregator"]
+    end
+
+    %% Connections
+    FE --> API
+    API --> CTE
+    CTE --> LS
+    LS --> BL
+
+    %% Styling (Optional: Makes it look cleaner on GitHub)
+    classDef box fill:#fff,stroke:#333,stroke-width:1px;
+    class FE,API,BL,P,PM,MET,JUP box
 ```
 
 ### Key Design Principles
@@ -400,5 +400,6 @@ MIT License - see [LICENSE](./LICENSE) file for details.
 
 
 ---
+
 
 **Disclaimer**: This software is in active development. Use at your own risk. Not available in restricted jurisdictions.
