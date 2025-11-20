@@ -156,8 +156,8 @@ Powered by X/Grok API for enhanced trading intelligence:
 
 ```bash
 # Clone repository
-git clone https://github.com/moxie-protocol/moxie-dex.git
-cd moxie-dex
+git clone https://github.com/thetruesammyjay/Moxie.git
+cd Moxie
 
 # Install dependencies
 pnpm install
@@ -194,7 +194,7 @@ pnpm dev:engine   # Trading engine
 ### Project Structure
 
 ```
-moxie-dex/
+Moxie/
 ├── programs/               # Solana smart contracts
 │   ├── moxie-router/      # Main routing program
 │   ├── moxie-perp/        # Perpetual futures
@@ -403,3 +403,4 @@ MIT License - see [LICENSE](./LICENSE) file for details.
 
 
 **Disclaimer**: This software is in active development. Use at your own risk. Not available in restricted jurisdictions.
+
