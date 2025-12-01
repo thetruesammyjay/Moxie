@@ -1,0 +1,18 @@
+{
+  "name": "@moxie-dex/math",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/decimal.js": "^7.4.3",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@moxie-dex/types": "workspace:*",
+    "decimal.js": "^10.6.0"
+  }
+}
